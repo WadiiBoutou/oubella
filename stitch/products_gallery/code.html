@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ffb4a3",
+              "tertiary-fixed": "#ffdcbd",
+              "surface-container-highest": "#e4e2de",
+              "surface-tint": "#9c432d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed": "#d6e8c5",
+              "surface": "#fbf9f5",
+              "surface-container-high": "#eae8e4",
+              "inverse-primary": "#ffb4a3",
+              "surface-container-low": "#f5f3ef",
+              "on-primary-fixed-variant": "#7d2c18",
+              "on-primary-fixed": "#3d0700",
+              "secondary": "#536347",
+              "primary-fixed": "#ffdad2",
+              "surface-variant": "#e4e2de",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#bbccaa",
+              "on-surface": "#1b1c1a",
+              "primary-container": "#b3543d",
+              "on-background": "#1b1c1a",
+              "outline-variant": "#dcc1ba",
+              "background": "#fbf9f5",
+              "on-secondary-fixed": "#121f09",
+              "on-primary": "#ffffff",
+              "tertiary-container": "#91683d",
+              "surface-dim": "#dbdad6",
+              "on-error-container": "#93000a",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "secondary-container": "#d4e6c2",
+              "on-secondary-container": "#58674b",
+              "on-tertiary-container": "#fff3ec",
+              "surface-bright": "#fbf9f5",
+              "primary": "#943d28",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#765027",
+              "on-primary-container": "#fff3f0",
+              "outline": "#89726d",
+              "tertiary-fixed-dim": "#f0bd8b",
+              "inverse-on-surface": "#f2f0ed",
+              "on-secondary-fixed-variant": "#3c4b31",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#56423e",
+              "surface-container": "#efeeea",
+              "on-tertiary-fixed": "#2c1600",
+              "on-tertiary-fixed-variant": "#623f18",
+              "inverse-surface": "#30312e"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .flat-glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .tonal-shift {
+            background-color: rgba(251, 249, 245, 0.8);
+        }
+        .reveal-fact {
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+        }
+        .group:hover .reveal-fact {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed-dim">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#FBF9F5]/80 dark:bg-stone-900/80 backdrop-blur-md tonal-shift shadow-sm shadow-stone-200/50 dark:shadow-none flat-glass-effect">
+<div class="flex justify-between items-center px-6 md:px-12 py-4 max-w-[1920px] mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#943D28] dark:text-[#FBF9F5] font-headline">
+                The Artisanal Terroir
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-['Noto_Serif'] antialiased text-sm tracking-wide">
+<a class="text-[#943D28] font-semibold border-b border-[#943D28] pb-1" href="#">Le Terroir</a>
+<a class="text-[#536347] dark:text-stone-400 hover:text-[#943D28] transition-colors" href="#">Nos Huiles</a>
+<a class="text-[#536347] dark:text-stone-400 hover:text-[#943D28] transition-colors" href="#">Épicerie</a>
+<a class="text-[#536347] dark:text-stone-400 hover:text-[#943D28] transition-colors" href="#">Art de Vivre</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-[#943D28] hover:opacity-80 transition-opacity duration-300 active:translate-y-[1px]" data-icon="language">language</button>
+</div>
+</div>
+</nav>
+<!-- Hero Header -->
+<header class="pt-32 pb-16 px-6 md:px-12 max-w-[1440px] mx-auto text-center">
+<span class="label-md uppercase tracking-[0.2em] text-secondary font-bold mb-4 block">L'Excellence du Savoir-Faire</span>
+<h1 class="text-5xl md:text-7xl font-headline text-primary tracking-tight mb-6">La Galerie Technique</h1>
+<p class="text-on-surface-variant max-w-2xl mx-auto leading-relaxed text-lg italic">
+            Une exploration sensorielle des trésors de l'Atlas et des plaines du Souss. Chaque produit raconte une histoire de terre, de main et de temps.
+        </p>
+</header>
+<!-- Technical Product Gallery -->
+<main class="max-w-[1440px] mx-auto px-6 md:px-12 pb-24">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Argan Oil Card -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-sm shadow-sm transition-all duration-500 hover:shadow-xl">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Pure Cosmetic Argan Oil" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up of golden liquid argan oil being poured into a dark amber glass bottle against a rustic stone wall background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-JlIOSBeH5uMRas-F17CL-L8Ge8KQaaQuKm5041VB8NxiB_9B27KNK080rOTOCnjtFEnTKabaDIg-tX0tIwhoX3XDsM4nXpfmmsBSIqn5e6CUAGRnrXO_zG6RG-76ijJfzyLrzogEk90wCF-JH4iEDa2uebV4diIsG9PJLwkicp2Pq9bfCeS16PLhYoFViVTXYLz7wkQruxYClYF574yThZVWVVvwvOJWl_Vp89T053SzW_XBc1Yifx2T6gJEeHzhUoDTak15Qks"/>
+</div>
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px] reveal-fact flex flex-col justify-center items-center p-8 text-center text-on-primary-container">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="lightbulb">lightbulb</span>
+<h4 class="font-bold uppercase tracking-widest text-xs mb-2">Le Saviez-vous ?</h4>
+<p class="font-body text-lg leading-relaxed">
+                        Il faut environ 30kg de fruits d'Arganier et 15 heures de travail manuel pour produire un seul litre d'huile pure.
+                    </p>
+</div>
+<div class="p-6 border-t border-outline-variant/20">
+<h3 class="font-headline text-2xl text-primary mb-2">Huile d'Argan Extra Vierge</h3>
+<p class="text-secondary text-sm font-medium uppercase tracking-tighter">Pressée à froid • Certifiée Bio</p>
+</div>
+</div>
+<!-- Saffron Card -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-sm shadow-sm transition-all duration-500 hover:shadow-xl">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Moroccan Saffron Stigmas" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Macro photography of deep crimson saffron threads in a handmade ceramic bowl with soft natural light highlighting the texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-tA1W4s2uyWBSwTgipqH99t1Psnu9UAXN1c1eLeTV-ELM7AiRWDPlChmnP84csUFkADrf-scXMxkJjUxdtqbizuLsiuYrN2GubdzNn1b4MdEYl6mNwrWdiSb5YL9r1kwGhMAxHrTAa0snacWsdgYxbz_1t7bmO9mqif0DdseMT_Fil0IBfhC3jfsg4Nn-0OipDmUvxt2Y0kLIw_wvqooaMUDEZX4lb08SLAaNWptdg0Ur4VtAob-dSl49kpnt_0orI_jSQ3R_nv0"/>
+</div>
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px] reveal-fact flex flex-col justify-center items-center p-8 text-center text-on-primary-container">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="wb_sunny">wb_sunny</span>
+<h4 class="font-bold uppercase tracking-widest text-xs mb-2">L'Origine</h4>
+<p class="font-body text-lg leading-relaxed">
+                        Notre Safran est cueilli à la main à l'aube à Taliouine, dans l'Anti-Atlas, avant que les fleurs ne s'ouvrent au soleil.
+                    </p>
+</div>
+<div class="p-6 border-t border-outline-variant/20">
+<h3 class="font-headline text-2xl text-primary mb-2">Safran de Taliouine AOP</h3>
+<p class="text-secondary text-sm font-medium uppercase tracking-tighter">Grade I • Catégorie Supérieure</p>
+</div>
+</div>
+<!-- Amlou Card -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-sm shadow-sm transition-all duration-500 hover:shadow-xl">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Traditional Amlou Spread" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Thick Moroccan Amlou spread in a clay pot with almonds and wooden spoon on a weathered wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnsETiTn27drb2B8QqauXprLAAolm_FCAr3jyO5SkV6s5v1zPCEpUmAPz4V34fiC_QR2nleKNQALQ7Zuz8K8AUNBz_lO8GUXNGU9UukciP4eZp4JD084IfDMM4jYGDHZgF71zKbxOece3Q2SivEfVmvZ5ZmUuLFUWoPtEHZ9WYHcyHtVwwLJp-vqTlmZJBNXN-XqIM1TgB4D97xT3u9cBcmlhHln6lYNIQPwmPfmiOHYOVTF33NaRkGTrUYpzJLKIuCNM-LTQsS78"/>
+</div>
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px] reveal-fact flex flex-col justify-center items-center p-8 text-center text-on-primary-container">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="restaurant">restaurant</span>
+<h4 class="font-bold uppercase tracking-widest text-xs mb-2">Secret de Recette</h4>
+<p class="font-body text-lg leading-relaxed">
+                        Le véritable Amlou ne contient que trois ingrédients : des amandes grillées, de l'huile d'argan et du miel d'oranger.
+                    </p>
+</div>
+<div class="p-6 border-t border-outline-variant/20">
+<h3 class="font-headline text-2xl text-primary mb-2">Amlou Traditionnel</h3>
+<p class="text-secondary text-sm font-medium uppercase tracking-tighter">Broyé à la meule de pierre</p>
+</div>
+</div>
+<!-- Honey Card (Euphorbia) -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-sm shadow-sm transition-all duration-500 hover:shadow-xl lg:col-span-2">
+<div class="aspect-[21/9] overflow-hidden">
+<img alt="Euphorbia Honey Harvest" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Golden honey dripping from a honeycomb in a sunny field with wild mountain flowers in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCwfbXgnOhMLm_up4cFgLC2JVRthDR9emD3klRyGhj0NBZzfe_NfwPBuZPfrcG3t_TRp5DIRq7eoteng3LmkYsflTaJZuORwGUMxm-pdK13QVP049X6-bL-B0ymiQit8rN5Hflky21n8RvqP9Al9o4gpKZh0UDiX-r3c0SP8IEHW68Eaz7JFwDgrwBYnRQWElUSvgViJ9XfuSJxIQzSJOhSU3_TwxQHXqrXh6ZXxtdNW9YYmERJ8LsUPncxd4jxYYR-ht4o7lOgio"/>
+</div>
+<div class="absolute inset-0 bg-secondary/60 backdrop-blur-[2px] reveal-fact flex flex-col justify-center items-center p-8 text-center text-white">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="eco">eco</span>
+<h4 class="font-bold uppercase tracking-widest text-xs mb-2">Propriétés Uniques</h4>
+<p class="font-body text-lg leading-relaxed max-w-xl">
+                        Le miel d'Euphorbe (Daghmous) est réputé pour son goût âcre et sa sensation de chaleur en gorge, recherché pour ses vertus médicinales.
+                    </p>
+</div>
+<div class="p-6 border-t border-outline-variant/20 bg-secondary-container/10">
+<h3 class="font-headline text-3xl text-primary mb-2">Miel d'Euphorbe Sauvage</h3>
+<p class="text-secondary text-sm font-medium uppercase tracking-tighter">Récolte du Haut-Atlas • Rare</p>
+</div>
+</div>
+<!-- Thyme Honey Card -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-sm shadow-sm transition-all duration-500 hover:shadow-xl">
+<div class="aspect-[4/5] overflow-hidden">
+<img alt="Thyme Honey Jar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Rustic jar of dark thyme honey on a linen cloth with dried thyme sprigs and warm sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPsG7pOvC5j72-tqlDxRc4gsbAea4Dhx8KVShsphg67_1EqX5xh_IBtdcns9xeSnHztNW8d45N3ooKrCjWZ6kQcAYnSDdgcLREjpbU9lKM0fWx76VMpSlBXU-h1GIVROcLnG6w9qSPFMlpLrPAR5vobnx2g6XnoeVB32p6qJ9cHdnX6E3Rq5DUY5E70UKZE8yDFJW8eLyBNtev8AANHce25rUnMG-qkkjYyT9WsOipoW1l4wQw8QmLmC-IsDsEufg0GY-sPh44VoY"/>
+</div>
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-[2px] reveal-fact flex flex-col justify-center items-center p-8 text-center text-on-primary-container">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="healing">healing</span>
+<h4 class="font-bold uppercase tracking-widest text-xs mb-2">Usage Traditionnel</h4>
+<p class="font-body text-lg leading-relaxed">
+                        Le miel de Thym est le pilier de la pharmacopée marocaine, utilisé depuis des siècles pour apaiser les maux d'hiver.
+                    </p>
+</div>
+<div class="p-6 border-t border-outline-variant/20">
+<h3 class="font-headline text-2xl text-primary mb-2">Miel de Thym (Zaatar)</h3>
+<p class="text-secondary text-sm font-medium uppercase tracking-tighter">Arôme Puissant • Terroir Authentique</p>
+</div>
+</div>
+</div>
+</main>
+<!-- SideNavBar (Floating Action) -->
+<div class="fixed bottom-8 right-8 rounded-full p-4 w-16 h-16 shadow-2xl z-50 bg-[#536347] dark:bg-[#943D28] flex items-center justify-center hover:scale-110 hover:rotate-3 transition-transform duration-300 shadow-[0_10px_30px_rgba(27,28,26,0.15)] group">
+<span class="material-symbols-outlined text-white text-3xl" data-icon="chat">chat</span>
+<div class="absolute right-20 bg-[#536347] text-white px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none font-bold">
+            Chatter avec un expert
+        </div>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-[#DCC1BA]/20 bg-[#F5F3EF] dark:bg-stone-950">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 md:px-24 py-16 w-full">
+<div class="flex flex-col">
+<span class="text-xl font-serif text-[#943D28] mb-4 block">The Artisanal Terroir</span>
+<p class="text-[#536347]/70 font-['Inter'] text-xs leading-relaxed tracking-[0.05em] uppercase max-w-xs">
+                    Préservons ensemble l'héritage vivant de nos coopératives et l'authenticité de nos produits d'exception.
+                </p>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="text-primary font-bold uppercase text-[10px] tracking-widest">Navigation</span>
+<div class="flex flex-col space-y-2 font-['Inter'] text-xs uppercase tracking-[0.05em]">
+<a class="text-[#536347]/70 hover:text-[#943D28] transition-colors duration-200" href="#">Mentions Légales</a>
+<a class="text-[#536347]/70 hover:text-[#943D28] transition-colors duration-200" href="#">Politique de Confidentialité</a>
+<a class="text-[#536347]/70 hover:text-[#943D28] transition-colors duration-200" href="#">Livraison</a>
+<a class="text-[#536347]/70 hover:text-[#943D28] transition-colors duration-200" href="#">Contact</a>
+</div>
+</div>
+<div class="flex flex-col space-y-4">
+<span class="text-primary font-bold uppercase text-[10px] tracking-widest">Réseaux Sociaux</span>
+<div class="flex space-x-6">
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors" data-icon="brand_awareness">brand_awareness</span>
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors" data-icon="camera">camera</span>
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors" data-icon="share">share</span>
+</div>
+</div>
+</div>
+<div class="px-8 md:px-24 py-8 border-t border-outline-variant/10 text-center">
+<p class="text-[#536347] dark:text-stone-300 font-['Inter'] text-xs leading-relaxed tracking-[0.05em] uppercase">
+                © 2024 The Artisanal Terroir. L'Excellence du Savoir-Faire Marocain.
+            </p>
+</div>
+</footer>
+</body></html>
