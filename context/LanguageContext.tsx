@@ -13,11 +13,16 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLang] = useState<Language>(() => {
-    if (typeof window === 'undefined') return 'fr';
+  // Always start with default locale so SSR + first client render match (avoids hydration errors).
+  // Persisted preference is applied after mount in useEffect.
+  const [lang, setLang] = useState<Language>('fr');
+
+  useEffect(() => {
     const savedLang = localStorage.getItem('app-lang') as Language | null;
-    return savedLang === 'fr' || savedLang === 'ar' ? savedLang : 'fr';
-  });
+    if (savedLang === 'fr' || savedLang === 'ar') {
+      setLang(savedLang);
+    }
+  }, []);
 
   const handleSetLang = (newLang: Language) => {
     setLang(newLang);

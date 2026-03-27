@@ -22,6 +22,7 @@ export const Marquee = ({
   return (
     <div
       {...props}
+      dir="ltr"
       className={cn(
         "group flex overflow-hidden [--duration:40s] [--gap:1rem] [flex-direction:row]",
         {
@@ -36,10 +37,10 @@ export const Marquee = ({
           <div
             key={i}
             className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
-              "animate-marquee flex-row": !vertical,
+              "animate-marquee flex-row": !vertical && !reverse,
+              "animate-marquee-reverse flex-row": !vertical && reverse,
               "animate-marquee-vertical flex-col": vertical,
               "group-hover:[animation-play-state:paused]": pauseOnHover,
-              "[animation-direction:reverse]": reverse,
             })}
           >
             {children}

@@ -1,27 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Serif, Cairo } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import WipeTransition from "@/components/WipeTransition";
 import { LanguageProvider } from "@/context/LanguageContext";
 import SmoothScrollProvider from "@/context/SmoothScrollProvider";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const notoSerif = Noto_Serif({
-  subsets: ["latin"],
-  variable: "--font-noto-serif",
-});
-
-const cairo = Cairo({
-  subsets: ["arabic"],
-  variable: "--font-arabic",
-});
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "Oubella",
@@ -40,17 +24,30 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth" data-scroll-behavior="smooth">
       <head>
         <link
+          rel="preload"
+          href="/fonts/Telma-Medium.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/Satoshi-Light.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         />
       </head>
-      <body
-        className={`${inter.variable} ${notoSerif.variable} ${cairo.variable} antialiased`}
-      >
+      <body className="antialiased font-sans">
         <LanguageProvider>
           <SmoothScrollProvider>
+            <ScrollToTop />
             <Navbar />
-            <WipeTransition>{children}</WipeTransition>
+            {children}
             <Footer />
             <WhatsAppButton />
           </SmoothScrollProvider>

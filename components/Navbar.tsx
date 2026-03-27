@@ -6,8 +6,29 @@ import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import MobileMenu from './MobileMenu';
 
-// LETTER ROLL HOVER EFFECT
-function RollLink({ children, href, className }: { children: string; href: string; className?: string }) {
+// LETTER ROLL HOVER EFFECT (disabled for RTL — splitting glyphs breaks Arabic shaping)
+function RollLink({
+  children,
+  href,
+  className,
+  plain,
+}: {
+  children: string;
+  href: string;
+  className?: string;
+  plain?: boolean;
+}) {
+  if (plain) {
+    return (
+      <Link
+        href={href}
+        className={`inline-flex cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-rich-carbon focus-visible:ring-accent-red rounded-sm ${className || ""}`}
+      >
+        {children}
+      </Link>
+    );
+  }
+
   const letters = [...children];
 
   return (
@@ -67,7 +88,6 @@ const Navbar = () => {
 
   const navLinks = [
     { name: t.nav.terroir, href: '/' },
-    { name: t.nav.about, href: '/about' },
     { name: t.nav.services, href: '/services' },
     { name: t.nav.huiles, href: '/gallery' },
     { name: t.nav.contact, href: '/contact' },
@@ -79,21 +99,21 @@ const Navbar = () => {
       <nav className={`fixed top-0 w-full z-50 text-white transition-all duration-700 ease-in-out pointer-events-none ${
         hasScrolled ? 'glass-effect border-b border-primary-container/10 py-3 shadow-md shadow-primary-container/5' : 'bg-transparent border-b border-transparent py-6'
       }`}>
-        <div className="flex justify-between items-center px-6 md:px-12 max-w-[1920px] mx-auto pointer-events-auto">
+        <div className="nav-page-gutter flex max-w-[1920px] mx-auto justify-between items-center pointer-events-auto md:px-12">
           <Link href="/" className="flex items-center gap-3 group">
             <img src={t.common.logo} alt="Logo" className={`object-contain transition-all duration-500 ${hasScrolled ? 'w-10 h-10' : 'w-12 h-12 group-hover:rotate-12'}`} />
             <span className={`font-headline font-bold tracking-tighter opacity-0 transition-all duration-500 ${hasScrolled ? 'text-2xl' : 'text-3xl'}`}>
               {t.common.name}
             </span>
           </Link>
-          <div className="hidden md:flex space-x-10 items-center rtl:space-x-reverse opacity-0 pointer-events-none">
+          <div className="hidden md:flex items-center gap-10 opacity-0 pointer-events-none">
             {navLinks.map((link) => (
               <div key={link.name} className={`font-label text-xs uppercase tracking-[0.2em] transition-all pb-1`}>
                 {link.name}
               </div>
             ))}
           </div>
-          <div className="flex items-center space-x-6 rtl:space-x-reverse opacity-0 pointer-events-none">
+          <div className="flex items-center gap-6 opacity-0 pointer-events-none">
             <button className="flex items-center gap-2 font-bold text-xs uppercase border border-white/30 px-4 py-2 rounded-full">
               <span className="material-symbols-outlined text-sm">language</span>
               <span>{lang === 'fr' ? 'AR' : 'FR'}</span>
@@ -110,7 +130,7 @@ const Navbar = () => {
       <nav className={`fixed top-0 w-full z-[51] mix-blend-difference text-white transition-all duration-700 ease-in-out pointer-events-none bg-transparent ${
         hasScrolled ? 'py-3' : 'py-6'
       }`}>
-        <div className="flex justify-between items-center px-6 md:px-12 max-w-[1920px] mx-auto pointer-events-auto">
+        <div className="nav-page-gutter flex max-w-[1920px] mx-auto justify-between items-center pointer-events-auto md:px-12">
           {/* Logo link with invisible image, passing through clicks conceptually */}
           <Link href="/" className="flex items-center gap-3 group">
             <img src={t.common.logo} alt="Logo" className={`object-contain opacity-0 pointer-events-none transition-all duration-500 ${hasScrolled ? 'w-10 h-10' : 'w-12 h-12'}`} />
@@ -118,12 +138,13 @@ const Navbar = () => {
               {t.common.name}
             </span>
           </Link>
-          <div className="hidden md:flex space-x-10 items-center rtl:space-x-reverse">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <RollLink
                 key={link.name}
                 href={link.href}
-                className={`font-label text-xs uppercase tracking-[0.2em] transition-all pb-1 hover:opacity-60 ${
+                plain={isRTL}
+                className={`shrink-0 whitespace-nowrap font-label text-xs uppercase tracking-[0.2em] transition-all pb-1 hover:opacity-60 ${
                   pathname === link.href
                     ? 'font-bold border-b border-white'
                     : 'opacity-90'
@@ -133,7 +154,7 @@ const Navbar = () => {
               </RollLink>
             ))}
           </div>
-          <div className="flex items-center space-x-6 rtl:space-x-reverse">
+          <div className="flex items-center gap-6">
             <button 
               onClick={() => setLang(lang === 'fr' ? 'ar' : 'fr')}
               aria-label={lang === 'fr' ? 'Changer en Arabe' : 'تغيير إلى الفرنسية'}

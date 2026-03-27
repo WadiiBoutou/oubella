@@ -13,9 +13,10 @@ interface TextRevealProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
+  noWrap?: boolean;
 }
 
-const TextReveal: React.FC<TextRevealProps> = ({ children, className, delay = 0 }) => {
+const TextReveal: React.FC<TextRevealProps> = ({ children, className, delay = 0, noWrap = true }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const wiperRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
@@ -60,17 +61,25 @@ const TextReveal: React.FC<TextRevealProps> = ({ children, className, delay = 0 
   }, [delay]);
 
   return (
-    <div ref={containerRef} className={cn("relative inline-flex flex-col w-fit overflow-hidden line h-fit", className)}>
-      {/* The Wiper - Saffron Gold (#D9A045) */}
-      <div 
-        ref={wiperRef} 
-        className="absolute inset-0 z-20 bg-tertiary scale-x-0" 
+    <div
+      ref={containerRef}
+      className={cn(
+        /* overflow-visible: glyphs / wiper overscan must not clip parent */
+        "relative inline-flex h-fit flex-col overflow-visible leading-none",
+        noWrap ? "w-fit" : "w-full",
+        className
+      )}
+    >
+      {/* Wiper bleeds horizontally only (scaleX); vertical matches text box. */}
+      <div
+        ref={wiperRef}
+        className="absolute inset-y-0 -inset-x-1.5 z-20 bg-tertiary scale-x-0"
         aria-hidden="true"
       />
       
-      {/* The Text - Locked to No-Wrap and Content-Width */}
-      <div ref={textRef} className="relative z-10 w-fit">
-        <span className="whitespace-nowrap inline-block">
+      {/* Text wrapper can opt into wrapping for narrow viewports (e.g. long hero titles). */}
+      <div ref={textRef} className={cn("relative z-10", noWrap ? "w-fit" : "w-full")}>
+        <span className={cn("inline-block", noWrap ? "whitespace-nowrap" : "whitespace-normal break-words")}>
           {children}
         </span>
       </div>

@@ -15,7 +15,6 @@ export const translations = {
     },
     nav: {
       terroir: "Accueil",
-      about: "À propos",
       services: "Services",
       huiles: "Nos Produits",
       contact: "Contact",
@@ -23,30 +22,6 @@ export const translations = {
     hero: {
       title: ["L'Art du Terroir", "Marocain"],
       cta: "Découvrez nos produits",
-    },
-    about: {
-      hero: {
-        label: "Nos Racines",
-        title: "L'Héritage Oubella",
-        desc: "Depuis des générations, notre famille cultive le respect de la terre et du geste juste. Oubella n'est pas seulement une marque, c'est le témoignage d'un savoir-faire ancestral préservé au cœur du Souss.",
-        quote: "La terre ne appartient pas à l'homme, c'est l'homme qui appartient à la terre."
-      },
-      heritage: {
-        unesco: "Patrimoine Mondial de l'UNESCO",
-        title: "La Réserve de Biosphère",
-        desc: "L'Arganeraie marocaine est un écosystème unique au monde. Nous travaillons main dans la main avec les coopératives locales pour assurer une gestion durable de cette ressource précieuse.",
-        narrative: "Chaque goutte d'huile d'argan Oubella porte en elle le souffle de l'Atlas et la dignité des femmes qui la produisent."
-      },
-      mission: {
-        title: "Nos Engagements",
-        desc: "Nous nous donnons pour mission de porter l'excellence du terroir marocain sur la scène internationale, sans jamais compromettre l'éthique ou la qualité.",
-        purity: "Pureté Absolue",
-        purityDesc: "100% Bio, sans additifs, pressé à froid selon les règles de l'art.",
-        fair: "Équité Sociale",
-        fairDesc: "Soutien direct aux coopératives féminines et prix juste garanti.",
-        knowhow: "Savoir-faire Ancestral",
-        knowhowDesc: "Préservation des rituels d'extraction traditionnels à la meule."
-      }
     },
     services: {
       hero: {
@@ -66,6 +41,33 @@ export const translations = {
         opt1: "Sélection personnalisée de produits",
         opt2: "Calligraphie manuelle sur demande",
         cta: "Demander un Devis"
+      },
+      process: {
+        label: "Artisanat & Qualite",
+        title: "Notre Processus de Selection",
+        items: [
+          {
+            icon: "water_drop",
+            title: "Extraction d'Argan",
+            desc: "Huile extraite a basse temperature pour conserver les actifs naturels, la purete aromatique et la stabilite du produit."
+          },
+          {
+            icon: "local_florist",
+            title: "Safran Trie Fil a Fil",
+            desc: "Selection manuelle des stigmates les plus riches en couleur et en parfum, avec un controle rigoureux de l'humidite."
+          },
+          {
+            icon: "verified",
+            title: "Traçabilite & Controle",
+            desc: "Chaque lot est suivi depuis la cooperative jusqu'au conditionnement final pour garantir regularite, securite et excellence."
+          }
+        ]
+      },
+      b2b: {
+        label: "Partenariats B2B",
+        title: "Offres Professionnelles Sur Mesure",
+        desc: "Nous accompagnons restaurateurs, epiceries fines et concept stores avec des formats adaptes, une logistique fiable et un service dedie.",
+        cta: "Parler a Notre Equipe"
       }
     },
     gallery: {
@@ -77,7 +79,54 @@ export const translations = {
       knowMore: "Le Saviez-vous ?",
       filters: "Filtrer l'Origine",
       title: "Le Mosaic Oubella",
-      cta: "Explorer la Collection Antique"
+      cta: "Explorer la Collection Antique",
+      items: [
+        {
+          title: "Huile d'Argan",
+          desc: "Extraite à froid des fruits de l'arganier du Souss, cette huile aux reflets dorés est un miracle de la nature pour la peau et les cheveux. Un soin ancestral pur et certifié, pilier de la culture cosmétique berbère.",
+          alt: "Huile d'Argan"
+        },
+        {
+          title: "Safran Pur",
+          desc: "L'or rouge des plateaux de l'Anti-Atlas. Chaque pistil est trié à la main aux premières lueurs, garantissant une puissance aromatique et colorante d'exception pour vos créations culinaires les plus fines.",
+          alt: "Safran Pur"
+        },
+        {
+          title: "L'Amlou Artisanal",
+          desc: "Un mariage onctueux d'amandes grillées, d'huile d'argan et de miel pur. La quintessence de la gourmandise berbère, riche en énergie et en saveurs authentiques. Préparez-vous à une explosion de terroir.",
+          alt: "Amlou artisanal"
+        },
+        {
+          title: "Miel Sauvage",
+          desc: "Récolté dans les hauteurs arides, ce miel de caractère offre des notes boisées et des vertus thérapeutiques puissantes. Un trésor apicole issu d'une flore sauvage protégée.",
+          alt: "Miel Sauvage"
+        },
+        {
+          title: "Savon Noir",
+          desc: "Purifié à l'huile d'olive, ce soin exfoliant emblématique du rituel du hammam libère la peau de ses impuretés tout en la laissant d'une douceur veloutée incomparable. La base indispensable du soin marocain.",
+          alt: "Savon Noir"
+        },
+        {
+          title: "Dattes de l'Atlas",
+          desc: "Surnommées le 'Diamant du Désert', ces dattes charnues et fondantes sont récoltées dans les palmeraies des vallées préservées. Un délice sucré 100% naturel et riche en minéraux.",
+          alt: "Dattes de l'Atlas"
+        },
+        {
+          title: "Ghassoul Minéral",
+          desc: "Argile volcanique unique au Moyen-Atlas, elle s'utilise en masque pour absorber les impuretés et purifier le cuir chevelu. 'La terre qui lave', utilisée par les femmes marocaines depuis des millénaires.",
+          alt: "Ghassoul minéral"
+        },
+        {
+          title: "Eau de Rose",
+          desc: "Distillée à partir de pétales de roses fraîches cueillies à l'aube, cette eau florale rafraîchit le teint et apaise les sens avec son parfum délicat. Une caresse de fraîcheur purifiante.",
+          alt: "Eau de Rose"
+        },
+        {
+          title: "Zaatar Parfumé",
+          desc: "Cueillie dans la montagne, cette herbe aromatique séchée au soleil est indispensable au quotidien. Son parfum camphré et ses propriétés digestives en font l'allié parfait de vos infusions et plats.",
+          alt: "Zaatar parfumé"
+        }
+      ]
     },
     contact: {
       hero: {
@@ -95,9 +144,9 @@ export const translations = {
       form: {
         title: "Envoyez un Message",
         name: "Votre Nom",
-        nameLoc: "Jean Dupont",
+        nameLoc: "Reda Oukattou",
         email: "Votre Courriel",
-        emailLoc: "jean@exemple.com",
+        emailLoc: "Raul@exemple.com",
         subject: "Objet",
         subjects: ["Demande d'information", "Commande professionnelle", "Partenariat", "Autre"],
         message: "Message",
@@ -112,7 +161,7 @@ export const translations = {
     pillars: [
       { id: "argan", title: "L'Or d'Argan", desc: "Le secret millénaire du Souss, pressé à froid pour une pureté absolue." },
       { id: "saffron", title: "Safran Rare", desc: "Le trésor de Taliouine, récolté fleur par fleur aux premières lueurs de l'aube." },
-      { id: "amlou", title: "Amlou Royal", desc: "La quintessence gourmande : amandes grillées, miel et huile d'argan." },
+      { id: "amlou", title: "Amlou Royal", desc: "Pâte à tartiner d'amandes grillées, miel et huile d'argan — crémeuse et authentique, préparée selon les traditions du Souss." },
       { id: "honey", title: "Miels Sauvages", desc: "La richesse florale de l'Atlas capturée dans chaque goutte dorée." }
     ],
     story: {
@@ -152,7 +201,7 @@ export const translations = {
     trust: [
       { icon: "eco", label: "100% Bio" },
       { icon: "handshake", label: "Direct Producteur" },
-      { icon: "public", label: "Livraison Mondiale" },
+      { icon: "public", label: "Livraison National" },
       { icon: "verified_user", label: "Paiement Sécurisé" }
     ],
     testimonials: {
@@ -172,7 +221,7 @@ export const translations = {
       delivery: "Livraison",
       contact: "Contact",
       follow: "Suivez l'Aventure",
-      rights: "© 2024 Oubella. Souffle de l'Atlas.",
+      rights: "© 2026 Oubella. Souffle de l'Atlas.",
     }
   },
   ar: {
@@ -191,7 +240,6 @@ export const translations = {
     },
     nav: {
       terroir: "الرئيسية",
-      about: "من نحن",
       services: "خدماتنا",
       huiles: "منتجاتنا",
       contact: "اتصل بنا",
@@ -199,30 +247,6 @@ export const translations = {
     hero: {
       title: ["فن التراث", "المغربي"],
       cta: "اكتشف منتجاتنا",
-    },
-    about: {
-      hero: {
-        label: "جذورنا",
-        title: "تراث أوبيلا",
-        desc: "منذ أجيال، تزرع عائلتنا احترام الأرض واللمسة الصحيحة. أوبيلا ليست مجرد علامة تجارية، إنها شهادة على خبرة قديمة محفوظة في قلب سوس.",
-        quote: "الأرض لا تنتمي للإنسان، بل الإنسان هو الذي ينتمي للأرض."
-      },
-      heritage: {
-        unesco: "التراث العالمي لليونسكو",
-        title: "محمية المحيط الحيوي",
-        desc: "أركان المغرب نظام بئي فريد في العالم. نحن نعمل مع التعاونيات المحلية لضمان إدارة مستدامة لهذا المورد الثمين.",
-        narrative: "كل قطرة زيت أركان من أوبيلا تحمل معها عبق الأطلس وكرامة النساء اللواتي ينتجنها."
-      },
-      mission: {
-        title: "التزاماتنا",
-        desc: "مهمتنا هي نقل تميز الأرض المغربية إلى الساحة الدولية، دون المساومة على الأخلاق أو الجودة.",
-        purity: "نقاء مطلق",
-        purityDesc: "عضوي 100%، بدون إضافات، معصور ببرودة وفقاً للأصول.",
-        fair: "عدالة اجتماعية",
-        fairDesc: "دعم مباشر لتعاونيات النساء وسعر عادل مضمون.",
-        knowhow: "خبرة عريقة",
-        knowhowDesc: "الحفاظ على طقوس العصر التقليدية بحجر الرحى."
-      }
     },
     services: {
       hero: {
@@ -242,6 +266,33 @@ export const translations = {
         opt1: "اختيار مخصص للمنتجات",
         opt2: "خط يدوي حسب الطلب",
         cta: "طلب عرض سعر"
+      },
+      process: {
+        label: "حرفية وجودة",
+        title: "منهجية الاختيار لدينا",
+        items: [
+          {
+            icon: "water_drop",
+            title: "استخلاص الأركان على البارد",
+            desc: "نستخلص الزيت بحرارة منخفضة للحفاظ على المكونات الطبيعية، النكهة الأصيلة وثبات الجودة."
+          },
+          {
+            icon: "local_florist",
+            title: "انتقاء الزعفران خيطاً بخيط",
+            desc: "فرز يدوي دقيق لأفضل الخيوط من حيث اللون والعطر، مع مراقبة صارمة لنسبة الرطوبة."
+          },
+          {
+            icon: "verified",
+            title: "تتبع كامل ومراقبة",
+            desc: "كل دفعة موثقة من التعاونية حتى التعبئة النهائية لضمان الاتساق، السلامة والتميز."
+          }
+        ]
+      },
+      b2b: {
+        label: "شراكات B2B",
+        title: "حلول مهنية مصممة لكم",
+        desc: "ندعم المطاعم والبوتيكات والمتاجر المتخصصة بأحجام مناسبة، لوجستيك موثوق وخدمة مهنية مخصصة.",
+        cta: "تواصل مع فريقنا"
       }
     },
     gallery: {
@@ -253,7 +304,54 @@ export const translations = {
       knowMore: "هل تعلم؟",
       filters: "تصفية حسب الأصل",
       title: "فسيفساء أوبيلا",
-      cta: "استكشف المجموعة العريقة"
+      cta: "استكشف المجموعة العريقة",
+      items: [
+        {
+          title: "زيت الأركان",
+          desc: "مستخلص على البارد من ثمار أشجار الأركان بسوس، هذا الزيت بلمعانه الذهبي معجزة طبيعية للبشرة والشعر. عناية أصيلة نقية ومعتمدة، ركيزة في التجميل الأمازيغي.",
+          alt: "زيت أركان"
+        },
+        {
+          title: "زعفران نقي",
+          desc: "ذهب أحمر من هضاب الأطلس الصغير. يُفرز كل ميسم يدوياً عند الفجر، لقوة عطرية ولونية استثنائية في أرقى أطباقكم.",
+          alt: "زعفران نقي"
+        },
+        {
+          title: "أملو حرفي",
+          desc: "مزيج كريمي من اللوز المحمص وزيت الأركان والعسل الطبيعي. جوهر المذاق البربري، غني بالطاقة وبنكهات أصيلة. استعدوا لانفجار من التراب.",
+          alt: "أملو حرفي"
+        },
+        {
+          title: "عسل بري",
+          desc: "يُجمع في الأعلاف القاحلة، عسل قوي بذوات خشبية وفوائد مهدئة قوية. كنز من نحل يغذي على أزهار بريّة محمية.",
+          alt: "عسل بري"
+        },
+        {
+          title: "صابون أسود",
+          desc: "منقى بزيت الزيتون، هذا المقشر الرمزي لطقوس الحمام يحرر البشرة من الشوائب ويتركها ناعمة كالمخمل. أساس العناية المغربية.",
+          alt: "صابون أسود"
+        },
+        {
+          title: "تمر الأطلس",
+          desc: "تُسمى «ماسة الصحراء»، تمرة ناضجة ودافئة من واحات وديان محفوظة. حلاوة طبيعية 100% غنية بالمعادن.",
+          alt: "تمر الأطلس"
+        },
+        {
+          title: "غاسول معدني",
+          desc: "طمي بركاني فريد من الأطلس المتوسط، يُستخدم كقناع لامتصاص الشوائب وتنقية فروة الرأس. «التراب الذي يغسل»، يستخدمه النساء المغربيات منذ أجيال.",
+          alt: "غاسول معدني"
+        },
+        {
+          title: "ماء الورد",
+          desc: "مقطر من بتلات ورد طازجة تُقطف عند الفجر، ينعش البشرة ويهدئ الحواس بعطر رقيق. لمسة انتعاش منقية.",
+          alt: "ماء الورد"
+        },
+        {
+          title: "زعتر معطر",
+          desc: "يُجمع في الجبال ويُجفف تحت الشمس، أعشاب عطرية لا غنى عنها يومياً. عطر كافوري وخصائص هضمية تجعله رفيقاً مثالياً للشاي والأطباق.",
+          alt: "زعتر معطر"
+        }
+      ]
     },
     contact: {
       hero: {
@@ -288,7 +386,7 @@ export const translations = {
     pillars: [
       { id: "argan", title: "أركان ذهبي", desc: "سر سوس القديم، معصور ببرودة لنقاء مطلق." },
       { id: "saffron", title: "زعفران نادر", desc: "كنز تاليوين، يجنى زهرة بزهرة عند بزوغ الفجر." },
-      { id: "amlou", title: "أملو ملكي", desc: "خلاصة المذاق: لوز محمص، عسل وزيت أركان." },
+      { id: "amlou", title: "أملو ملكي", desc: "معجون من لوز محمص وعسل وزيت أركان، قوام كريمي وأصيل كما في تقاليد سوس." },
       { id: "honey", title: "عسل بري", desc: "ثراء الأطلس النباتي في كل قطرة ذهبية." }
     ],
     story: {
@@ -348,7 +446,7 @@ export const translations = {
       delivery: "التوصيل",
       contact: "اتصال",
       follow: "تابع المغامرة",
-      rights: "© 2024 أوبيلا. عبق الأطلس.",
+      rights: "© 2026 أوبيلا. عبق الأطلس.",
     }
   },
 };

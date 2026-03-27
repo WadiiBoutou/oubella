@@ -4,6 +4,16 @@ import { useEffect } from 'react';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 
+type LenisLike = {
+  scrollTo?: (target: number | string, opts?: { immediate?: boolean }) => void;
+};
+
+declare global {
+  interface Window {
+    __lenis?: LenisLike | null;
+  }
+}
+
 const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const lenis = new Lenis({
@@ -20,8 +30,15 @@ const SmoothScrollProvider = ({ children }: { children: React.ReactNode }) => {
 
     requestAnimationFrame(raf);
 
+    // Expose the Lenis instance so other components (e.g. route scroll reset)
+    // can trigger scroll actions without fighting the smooth scroll engine.
+    window.__lenis = lenis;
+
     return () => {
       lenis.destroy();
+      if (window.__lenis === lenis) {
+        window.__lenis = null;
+      }
     };
   }, []);
 

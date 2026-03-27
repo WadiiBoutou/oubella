@@ -16,7 +16,6 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
   const navLinks = [
     { name: t.nav.terroir, href: '/' },
-    { name: t.nav.about, href: '/about' },
     { name: t.nav.services, href: '/services' },
     { name: t.nav.huiles, href: '/gallery' },
     { name: t.nav.contact, href: '/contact' },
@@ -24,14 +23,14 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
   const panelVariants = {
     closed: { x: '-100%' },
-    open: { x: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
-    exit: { x: '-100%', transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } }
+    open: { x: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const } },
+    exit: { x: '-100%', transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const } }
   };
 
   const rightPanelVariants = {
     closed: { x: '100%' },
-    open: { x: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] } },
-    exit: { x: '100%', transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] } }
+    open: { x: 0, transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] as const } },
+    exit: { x: '100%', transition: { duration: 0.6, ease: [0.76, 0, 0.24, 1] as const } }
   };
 
   const staggerLinks = {
@@ -48,7 +47,8 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex overflow-hidden">
+        /* LTR structure: keeps flex order + slide animations aligned (RTL on <html> reverses flex-row and breaks panels) */
+        <div className="fixed inset-0 z-[100] flex overflow-hidden" dir="ltr">
           {/* Backdrop Darkening */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -64,16 +64,19 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             initial="closed"
             animate="open"
             exit="exit"
-            className="relative w-full lg:w-[60%] h-full bg-surface border-r border-primary/5 flex flex-col justify-center px-10 md:px-24 z-20"
+            dir={isRTL ? 'rtl' : 'ltr'}
+            className="relative z-20 flex h-full w-full flex-col justify-center border-r border-primary/5 bg-surface px-5 sm:px-10 md:px-16 lg:w-[60%] lg:px-24"
           >
-            <motion.div variants={staggerLinks} initial="closed" animate="open" className="space-y-6 md:space-y-10">
+            <motion.div variants={staggerLinks} initial="closed" animate="open" className="space-y-4 sm:space-y-6 md:space-y-10">
               {navLinks.map((link, i) => (
-                <motion.div key={link.name} variants={linkVariants} className="group flex items-center gap-8">
-                  <span className="text-secondary/30 font-headline text-lg italic">(0{i + 1})</span>
+                <motion.div key={link.name} variants={linkVariants} className="group flex items-center gap-3 sm:gap-6 md:gap-8">
+                  <span className="text-secondary/30 font-headline text-sm italic sm:text-lg" aria-hidden="true">
+                    (0{i + 1})
+                  </span>
                   <Link
                     href={link.href}
                     onClick={onClose}
-                    className={`text-5xl md:text-8xl font-headline font-bold uppercase tracking-tighter transition-colors hover:text-tertiary ${
+                    className={`text-[clamp(1.75rem,7vw,4.5rem)] font-headline font-bold uppercase tracking-tighter transition-colors hover:text-tertiary md:text-7xl lg:text-8xl ${
                       pathname === link.href ? 'text-primary' : 'text-primary-container'
                     }`}
                   >
@@ -90,7 +93,8 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             initial="closed"
             animate="open"
             exit="exit"
-            className="hidden lg:flex relative w-[40%] h-full bg-primary-container text-surface flex-col justify-between p-20 z-20 shadow-2xl"
+            dir={isRTL ? 'rtl' : 'ltr'}
+            className="relative z-20 hidden h-full w-[40%] flex-col justify-between bg-primary-container p-20 text-surface shadow-2xl lg:flex"
           >
             <div className="flex justify-end">
               <button
@@ -105,7 +109,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                <div className="w-48 h-48 rounded-full border border-surface/10 flex items-center justify-center p-8">
                   <img src={t.common.logo} alt="Logo" className="w-full h-full object-contain invert opacity-90" />
                </div>
-               <h2 className="text-4xl font-headline font-bold tracking-tighter uppercase">{t.common.name}</h2>
+               <h2 className="text-4xl font-headline font-bold tracking-tighter">{t.common.name}</h2>
             </div>
 
             <div className="grid grid-cols-2 gap-12 text-start">
@@ -113,7 +117,11 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                 <p className="font-label text-[10px] uppercase tracking-widest text-tertiary font-bold">{t.common.emailLabel}</p>
                 <p className="text-sm border-b border-surface/10 pb-2">contact@oubella.ma</p>
                 <p className="font-label text-[10px] uppercase tracking-widest text-tertiary font-bold mt-8">{t.common.phoneLabel}</p>
-                <p className="text-sm">{t.common.phoneValue}</p>
+                <p className="text-sm">
+                  <span dir="ltr" className="inline-block">
+                    {t.common.phoneValue}
+                  </span>
+                </p>
               </div>
               <div className="space-y-4">
                 <p className="font-label text-[10px] uppercase tracking-widest text-tertiary font-bold">{t.common.officeLabel}</p>
