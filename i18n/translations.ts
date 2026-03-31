@@ -1,7 +1,7 @@
 export const translations = {
   fr: {
     common: {
-      name: "Oubella",
+      name: "Tissouan",
       whatsapp: "Chatter maintenant",
       logo: "/logo.webp",
       close: "Fermer",
@@ -78,7 +78,7 @@ export const translations = {
       },
       knowMore: "Le Saviez-vous ?",
       filters: "Filtrer l'Origine",
-      title: "Le Mosaic Oubella",
+      title: "Le Mosaic Tissouan",
       cta: "Explorer la Collection Antique",
       items: [
         {
@@ -135,8 +135,7 @@ export const translations = {
         desc: "Notre équipe est à votre écoute pour vous conseiller sur nos rituels ou organiser vos commandes volumineuses."
       },
       details: {
-        headquarters: "Siège Social",
-        address: "Zone Industrielle, Agadir 80000, Maroc",
+        address: "Souss-Massa",
         email: "Contact Direct",
         phone: "Ligne Directe",
         availability: "Lun - Ven: 09:00 - 18:00"
@@ -147,8 +146,6 @@ export const translations = {
         nameLoc: "Reda Oukattou",
         email: "Votre Courriel",
         emailLoc: "Raul@exemple.com",
-        subject: "Objet",
-        subjects: ["Demande d'information", "Commande professionnelle", "Partenariat", "Autre"],
         message: "Message",
         messageLoc: "Comment pouvons-nous vous aider ?",
         submit: "Envoyer le Message"
@@ -167,7 +164,7 @@ export const translations = {
     story: {
       label: "Héritage Artisanal",
       title: ["Plus qu'un produit,", "une transmission."],
-      desc: "Au cœur de nos vallées, le savoir-faire ne s'enseigne pas, il s'hérite. Oubella collabore avec des coopératives de femmes pour préserver ce lien vital entre la terre et le geste ancestral. Chaque pot raconte une story de résilience, de dignité et de respect de la nature."
+      desc: "Au cœur de nos vallées, le savoir-faire ne s'enseigne pas, il s'hérite. Tissouan collabore avec des coopératives de femmes pour préserver ce lien vital entre la terre et le geste ancestral. Chaque pot raconte une histoire de résilience, de dignité et de respect de la nature."
     },
     process: {
       title: "Du Champ au Cristal",
@@ -189,7 +186,7 @@ export const translations = {
       title: "Rituels & Bienfaits",
       magazine: {
         title: "Éloge de la Lenteur",
-        desc: "Utiliser nos produits, c'est adopter un rituel de soin ancestral. L'Huile d'Argan Oubella n'est pas qu'un cosmétique, c'est une protection sacrée."
+        desc: "Utiliser nos produits, c'est adopter un rituel de soin ancestral. L'Huile d'Argan Tissouan n'est pas qu'un cosmétique, c'est une protection sacrée."
       },
       benefits: [
         "Hydratation profonde et régénération cellulaire",
@@ -207,7 +204,7 @@ export const translations = {
     testimonials: {
       title: "Témoignages Clients",
       items: [
-        { name: "Sophie Durant", role: "Chef de Cuisine", body: "L'huile d'argan Oubella a transformé mes recettes. On sent la pureté et le terroir dans chaque goutte.", rating: 5 },
+        { name: "Sophie Durant", role: "Chef de Cuisine", body: "L'huile d'argan Tissouan a transformé mes recettes. On sent la pureté et le terroir dans chaque goutte.", rating: 5 },
         { name: "Marc Lefebvre", role: "Naturopathe", body: "Un safran d'une intensité rare. Le conditionnement est magnifique et respecte le produit.", rating: 4 },
         { name: "Yasmina Benani", role: "Passionnée de soins Bio", body: "L'Amlou est tout simplement divin. Le goût est authentique, loin des produits industriels.", rating: 5 },
         { name: "Jean-Pierre", role: "Collectionneur de miels", body: "Le miel d'euphorbe est une découverte incroyable. Un produit d'exception.", rating: 3 }
@@ -221,12 +218,12 @@ export const translations = {
       delivery: "Livraison",
       contact: "Contact",
       follow: "Suivez l'Aventure",
-      rights: "© 2026 Oubella. Souffle de l'Atlas.",
+      rights: "© 2026 Tissouan. Souffle de l'Atlas.",
     }
   },
   ar: {
     common: {
-      name: "Oubella",
+      name: "تيسوان",
       whatsapp: "تحدث معنا الآن",
       logo: "/logo.webp",
       close: "إغلاق",
@@ -303,7 +300,7 @@ export const translations = {
       },
       knowMore: "هل تعلم؟",
       filters: "تصفية حسب الأصل",
-      title: "فسيفساء أوبيلا",
+      title: "فسيفساء تيسوان",
       cta: "استكشف المجموعة العريقة",
       items: [
         {
@@ -360,8 +357,7 @@ export const translations = {
         desc: "فريقنا في استماعكم لتقديم المشورة بشأن طقوسنا أو تنظيم طلباتكم الكبيرة."
       },
       details: {
-        headquarters: "المقر الرئيسي",
-        address: "المنطقة الصناعية، أكادير 80000، المغرب",
+        address: "سوس-ماسة",
         email: "اتصال مباشر",
         phone: "خط مباشر",
         availability: "الاثنين - الجمعة: 09:00 - 18:00"
@@ -372,8 +368,6 @@ export const translations = {
         nameLoc: "محمد علي",
         email: "بريدك الإلكتروني",
         emailLoc: "contact@example.com",
-        subject: "الموضوع",
-        subjects: ["طلب معلومات", "طلب مهني", "شراكة", "أخرى"],
         message: "الرسالة",
         messageLoc: "كيف يمكننا مساعدتك؟",
         submit: "إرسال الرسالة"
@@ -392,7 +386,7 @@ export const translations = {
     story: {
       label: "تراث حرفي",
       title: ["أكثر من مجرد منتج،", "إنه أمانة."],
-      desc: "في قلب ودياننا، الخبرة لا تُدرس، بل تُورث. 'أوبيلا' تتعاون مع تعاونيات نسائية للحفاظ على هذا الرابط الحيوي بين الأرض واللمسة القديمة. كل جرة تحكي قصة صمود، كرامة واحترام للطبيعة."
+      desc: "في قلب ودياننا، الخبرة لا تُدرس، بل تُورث. تيسوان تتعاون مع تعاونيات نسائية للحفاظ على هذا الرابط الحيوي بين الأرض واللمسة القديمة. كل جرة تحكي قصة صمود، كرامة واحترام للطبيعة."
     },
     process: {
       title: "من الأرض إلى البلور",
@@ -414,7 +408,7 @@ export const translations = {
       title: "طقوس وفوائد",
       magazine: {
         title: "في مدح التأني",
-        desc: "استخدام منتجاتنا يعني تبني طقوس عناية قديمة. زيت الأركان من أوبيلا ليس مجرد مستحضر؛ إنه حماية مقدسة."
+        desc: "استخدام منتجاتنا يعني تبني طقوس عناية قديمة. زيت الأركان من تيسوان ليس مجرد مستحضر؛ إنه حماية مقدسة."
       },
       benefits: [
         "ترطيب عميق وتجديد للخلايا",
@@ -432,7 +426,7 @@ export const translations = {
     testimonials: {
       title: "آراء عملائنا",
       items: [
-        { name: "صوفيا دوران", role: "شيف", body: "زيت أركان أوبيلا غير وصفاتي. تشعر بالنقاء والأصالة في كل قطرة.", rating: 5 },
+        { name: "صوفيا دوران", role: "شيف", body: "زيت أركان تيسوان غيّر وصفاتي. يُحسّ بالنقاء والأصالة في كل قطرة.", rating: 5 },
         { name: "مارك لوفيفر", role: "أخصائي تغذية", body: "زعفران بكثافة نادرة. التغليف رائع ويحترم قيمة المنتج.", rating: 4 },
         { name: "ياسمينة بناني", role: "عاشقة للمنتجات العضوية", body: "أملو رائع حقاً. المذاق أصيل وبعيد عن المنتجات الصناعية.", rating: 5 },
         { name: "جون بيير", role: "هاوي أعسال", body: "عسل الدغموس اكتشاف مذهل. منتج استثنائي.", rating: 3 }
@@ -446,7 +440,7 @@ export const translations = {
       delivery: "التوصيل",
       contact: "اتصال",
       follow: "تابع المغامرة",
-      rights: "© 2026 أوبيلا. عبق الأطلس.",
+      rights: "© 2026 تيسوان. عبق الأطلس.",
     }
   },
 };

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
 
@@ -8,7 +9,13 @@ function ProductImageFrame({ src, alt }: { src: string; alt: string }) {
   return (
     <div className="flex h-full w-full items-center justify-center p-2 sm:p-4 md:p-8">
       <div className="relative w-full max-w-[400px] aspect-[4/5] rounded-sm overflow-hidden border border-white/15 bg-black/15 shadow-2xl">
-        <img src={src} alt={alt} className="h-full w-full object-cover" loading="lazy" />
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 400px) 100vw, 400px"
+          className="h-full w-full object-cover"
+        />
       </div>
     </div>
   );
@@ -35,12 +42,13 @@ export default function GalleryPageClient() {
       const meta = GALLERY_SLIDES[i];
       const imageBlock =
         meta.layout === "contain" ? (
-          <div className="flex h-full w-full items-center justify-center">
-            <img
+          <div className="flex h-full w-full items-center justify-center relative">
+            <Image
               src={meta.src}
-              className="h-auto w-auto max-h-[80%] max-w-full rounded-sm object-contain"
+              fill
+              sizes="100vw"
+              className="rounded-sm object-contain p-4"
               alt={item.alt}
-              loading="lazy"
             />
           </div>
         ) : (

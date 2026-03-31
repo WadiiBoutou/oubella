@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import { usePathname } from 'next/navigation';
 
@@ -105,17 +106,22 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               </button>
             </div>
 
-            <div className="flex flex-col items-center text-center space-y-12">
-               <div className="w-48 h-48 rounded-full border border-surface/10 flex items-center justify-center p-8">
-                  <img src={t.common.logo} alt="Logo" className="w-full h-full object-contain invert opacity-90" />
-               </div>
-               <h2 className="text-4xl font-headline font-bold tracking-tighter">{t.common.name}</h2>
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="flex h-52 w-52 items-center justify-center rounded-full border border-surface/10 p-8 sm:h-56 sm:w-56 relative overflow-hidden">
+                <Image
+                  src="/LOGO2.webp"
+                  alt={t.common.name}
+                  width={208}
+                  height={208}
+                  className="h-full w-full object-contain opacity-95"
+                />
+              </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-12 text-start">
+            <div className="grid grid-cols-1 gap-12 text-start">
               <div className="space-y-4">
                 <p className="font-label text-[10px] uppercase tracking-widest text-tertiary font-bold">{t.common.emailLabel}</p>
-                <p className="text-sm border-b border-surface/10 pb-2">contact@oubella.ma</p>
+                <p className="text-sm border-b border-surface/10 pb-2">contact@tissouan.ma</p>
                 <p className="font-label text-[10px] uppercase tracking-widest text-tertiary font-bold mt-8">{t.common.phoneLabel}</p>
                 <p className="text-sm">
                   <span dir="ltr" className="inline-block">
@@ -123,19 +129,9 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
                   </span>
                 </p>
               </div>
-              <div className="space-y-4">
-                <p className="font-label text-[10px] uppercase tracking-widest text-tertiary font-bold">{t.common.officeLabel}</p>
-                <p className="text-sm border-b border-surface/10 pb-2">{t.common.officeValue}</p>
-                <p className="font-label text-[10px] uppercase tracking-widest text-tertiary font-bold mt-8">{t.common.socialLabel}</p>
-                <div className="flex gap-4">
-                   <span className="text-xs uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer">Instagram</span>
-                   <span className="text-xs uppercase tracking-widest opacity-60 hover:opacity-100 cursor-pointer">Facebook</span>
-                </div>
-              </div>
             </div>
 
             <div className="flex justify-between items-end">
-               <p className="text-[10px] opacity-30 uppercase tracking-[0.2em]">{t.footer.rights}</p>
                <span className="font-headline text-6xl opacity-5 italic text-surface select-none">Heritage</span>
             </div>
           </motion.div>

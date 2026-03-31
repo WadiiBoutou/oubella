@@ -94,8 +94,8 @@ body, .font-sans {
   --color-secondary: #4a5d43; /* Muted Olive */
   --color-tertiary: #d9a045; /* Saffron Gold */
 
-  --color-accent-indigo: #2a3b4c; /* Majorelle / deep UI blue */
-  --color-hero-cta: #1a2634; /* Hero primary button (dark slate) */
+  --color-accent-indigo: #85894f; /* Signature olive accent (133,137,79) */
+  --color-hero-cta: #85894f; /* Hero primary button */
   --color-text-deep: #2d211b;
   --color-rich-carbon: #0d0d0d;
   --color-accent-red: #721c1c;
@@ -147,7 +147,8 @@ body, .font-sans {
   --font-headline: var(--font-serif);
   --font-body: var(--font-sans);
   --font-label: var(--font-sans);
-  --font-arabic: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  /* Arabic UI: Tahoma Regular (system on Windows; good Arabic coverage) */
+  --font-arabic: Tahoma, "Segoe UI", Arial, sans-serif;
 
   --shadow-editorial: 0 10px 30px color-mix(in srgb, var(--color-primary-container) 8%, transparent);
   --shadow-inset-ambient: inset 0 0 100px color-mix(in srgb, var(--color-rich-carbon) 25%, transparent);
@@ -256,6 +257,21 @@ body, .font-sans {
   .font-arabic {
     font-family: var(--font-arabic);
   }
+
+  /* Headlines use Telma globally; in Arabic (RTL) use Tahoma (Regular 400 is the default face) */
+  .font-arabic h1,
+  .font-arabic h2,
+  .font-arabic h3,
+  .font-arabic .font-serif,
+  .font-arabic .font-headline {
+    font-family: var(--font-arabic) !important;
+  }
+
+  .font-arabic .font-body,
+  .font-arabic .font-sans,
+  .font-arabic .font-label {
+    font-family: var(--font-arabic) !important;
+  }
 }
 
 @layer utilities {
@@ -287,7 +303,7 @@ body, .font-sans {
 
   /* Premium Button Standard */
   .btn-premium {
-    @apply px-[40px] py-[16px] bg-tertiary text-primary-container rounded-sm font-label text-sm uppercase tracking-[0.3em] font-bold transition-all duration-300 ease-in-out hover:bg-accent-red hover:text-white active:translate-y-[2px] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface focus-visible:ring-accent-red;
+    @apply px-[40px] py-[16px] bg-accent-indigo text-white rounded-sm font-label text-sm uppercase tracking-[0.3em] font-bold transition-all duration-300 ease-in-out hover:bg-rich-carbon hover:text-white active:translate-y-[2px] shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface focus-visible:ring-accent-red;
   }
 
   .section-padding {

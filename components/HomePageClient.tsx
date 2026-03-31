@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { Marquee } from "@/components/Marquee";
 import TextReveal from "@/components/TextReveal";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -136,9 +137,110 @@ const ReviewCard = ({
   </div>
 );
 
+const HERO_VIDEO_SRC = "/video/vid.mp4";
+
 export default function HomePageClient() {
   const { t, lang, isRTL } = useLanguage();
   const containerRef = useRef<HTMLDivElement>(null);
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const heroContentRef = useRef<HTMLDivElement>(null);
+  const heroLogoRef = useRef<HTMLDivElement>(null);
+  const heroHeadlineRef = useRef<HTMLDivElement>(null);
+  const heroCtaRef = useRef<HTMLDivElement>(null);
+  const onHeroVideoPlaying = useCallback(() => {
+    // keep for potential future hero sequencing; currently no-op beyond gesture unlock
+  }, []);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    const seekToStart = () => {
+      try {
+        video.currentTime = 0;
+      } catch {
+        /* ignore */
+      }
+    };
+
+    let cancelled = false;
+
+    gsap.set(video, { opacity: 1 });
+
+    const onLoadedMetadata = () => {
+      if (cancelled) return;
+      seekToStart();
+    };
+
+    const tryPlayFromGesture = () => {
+      if (cancelled) return;
+      video.muted = true;
+      seekToStart();
+      void video.play().catch(() => {
+        // Autoplay blocked: keep the poster/first frame and allow user to interact.
+        seekToStart();
+        video.pause();
+      });
+    };
+
+    let autoplayUnlockHandler: (() => void) | null = null;
+
+    const onAutoplayBlocked = () => {
+      if (cancelled) return;
+      autoplayUnlockHandler = () => {
+        if (autoplayUnlockHandler) {
+          window.removeEventListener("pointerdown", autoplayUnlockHandler, true);
+          window.removeEventListener("keydown", autoplayUnlockHandler, true);
+        }
+        autoplayUnlockHandler = null;
+        if (!cancelled) tryPlayFromGesture();
+      };
+      window.addEventListener("pointerdown", autoplayUnlockHandler, true);
+      window.addEventListener("keydown", autoplayUnlockHandler, true);
+    };
+
+    const tryPlay = () => {
+      if (cancelled) return;
+      video.muted = true;
+      seekToStart();
+      void video.play().catch((err: unknown) => {
+        if (cancelled) return;
+        const name = err instanceof DOMException ? err.name : (err as Error)?.name;
+        if (name === "AbortError") return;
+        if (name === "NotAllowedError") {
+          onAutoplayBlocked();
+        }
+      });
+    };
+
+    const startWhenReady = () => {
+      if (cancelled) return;
+      if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+        tryPlay();
+        return;
+      }
+      video.addEventListener("canplay", tryPlay, { once: true });
+    };
+
+    video.addEventListener("loadedmetadata", onLoadedMetadata);
+    if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+      onLoadedMetadata();
+    }
+
+    startWhenReady();
+
+    return () => {
+      cancelled = true;
+      if (autoplayUnlockHandler) {
+        window.removeEventListener("pointerdown", autoplayUnlockHandler, true);
+        window.removeEventListener("keydown", autoplayUnlockHandler, true);
+        autoplayUnlockHandler = null;
+      }
+      video.removeEventListener("loadedmetadata", onLoadedMetadata);
+      video.removeEventListener("canplay", tryPlay);
+      video.pause();
+    };
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -315,10 +417,15 @@ export default function HomePageClient() {
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0 z-0">
-          <img
-            alt="Cinematic Moroccan Landscape"
-            className="w-full h-full object-cover contrast-[1.02] saturate-[1.05]"
-            src="/images/hero.webp"
+          <video
+            ref={heroVideoRef}
+            className="absolute inset-0 w-full h-full object-cover contrast-[1.02] saturate-[1.05]"
+            src={HERO_VIDEO_SRC}
+            muted
+            playsInline
+            preload="auto"
+            loop={false}
+            onPlaying={onHeroVideoPlaying}
           />
           {/* Layered overlays for depth */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/60 opacity-90" />
@@ -326,39 +433,61 @@ export default function HomePageClient() {
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,color-mix(in_srgb,var(--color-rich-carbon)_10%,transparent),color-mix(in_srgb,var(--color-rich-carbon)_55%,transparent))] opacity-70" />
           <div aria-hidden="true" className="absolute inset-0 grain-overlay" />
         </div>
-        <div className="relative z-10 flex flex-col items-center px-4 text-center sm:px-6 container-max">
-          {/* Mini-Logo Header as per reference */}
-          <div className="reveal mb-8">
-            <img src={t.common.logo} alt="Mini-Logo" className="h-14 w-14 grayscale-0 brightness-110 drop-shadow-[0_15px_30px_color-mix(in_srgb,var(--color-rich-carbon)_50%,transparent)] sm:h-16 sm:w-16" />
+        <div
+          ref={heroContentRef}
+          className="relative z-10 flex flex-col items-center px-4 text-center sm:px-6 container-max"
+        >
+          <div
+            ref={heroLogoRef}
+            className="mb-8"
+          >
+            <Image
+              src="/LOGO3.webp"
+              alt={t.common.name}
+              width={200}
+              height={84}
+              priority
+              className="h-16 w-auto max-w-[160px] object-contain drop-shadow-[0_12px_48px_rgba(0,0,0,0.65)] sm:h-[5.25rem] sm:max-w-[200px]"
+            />
           </div>
 
-          <div className="relative flex flex-col items-center mb-10">
+          <div
+            ref={heroHeadlineRef}
+            className="relative flex flex-col items-center mb-10"
+          >
             <div className="absolute inset-0 blur-3xl bg-black/50 scale-[1.5] rounded-full pointer-events-none" aria-hidden="true" />
             {t.hero.title.map((line, i) => (
-              <div key={i} className={i === 0 ? "relative z-10 mb-4 md:mb-6" : "relative z-10"}>
-                <TextReveal delay={i * 0.2}>
-                  <h1 className="text-white font-headline text-[clamp(2rem,9vw,6rem)] font-bold tracking-tight !text-white mb-0 inline-block leading-[1.12] md:text-8xl md:leading-[1.18] [text-shadow:_0_4px_30px_rgba(0,0,0,0.8),_0_2px_10px_rgba(0,0,0,0.6)] pb-[0.08em] pt-[0.04em]">
-                    {line}
-                  </h1>
-                </TextReveal>
+              <div
+                key={i}
+                className={`hero-headline-line relative z-10 ${i === 0 ? "mb-4 md:mb-6" : ""}`}
+              >
+                <h1 className="text-white font-headline text-[clamp(2rem,9vw,6rem)] font-bold tracking-tight !text-white mb-0 inline-block leading-[1.12] md:text-8xl md:leading-[1.18] [text-shadow:_0_4px_30px_rgba(0,0,0,0.8),_0_2px_10px_rgba(0,0,0,0.6)] pb-[0.08em] pt-[0.04em]">
+                  {line}
+                </h1>
               </div>
             ))}
           </div>
 
-          <div className="reveal mt-4">
+          <div
+            ref={heroCtaRef}
+            className="mt-4"
+          >
             <Link href="/gallery" className="inline-block">
-              <button className="btn-premium px-8 py-4 text-xs tracking-[0.25em] uppercase bg-hero-cta border-white/5 font-bold text-tertiary transition-all hover:bg-rich-carbon sm:px-12 sm:py-5 sm:text-sm sm:tracking-[0.3em]">
+              <button
+                type="button"
+                className="btn-premium px-8 py-4 text-xs tracking-[0.25em] uppercase bg-hero-cta border-white/5 font-bold text-white transition-colors duration-300 hover:bg-rich-carbon sm:px-12 sm:py-5 sm:text-sm sm:tracking-[0.3em]"
+              >
                 {t.hero.cta}
               </button>
             </Link>
           </div>
 
           {/* Trust strip (premium micro-credibility) */}
-          <div className="reveal mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             {t.trust.map((item) => (
               <div
                 key={item.label}
-                className="group flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-sm transition-all duration-300 hover:bg-white/10"
+                className="hero-trust-chip group flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 transition-[background-color] duration-300 hover:bg-white/15"
               >
                 <span
                   className="material-symbols-outlined text-[18px] text-tertiary opacity-90 group-hover:opacity-100"
@@ -427,8 +556,14 @@ export default function HomePageClient() {
             </div>
           </div>
           <div className="relative z-10 group">
-            <div className="reveal aspect-[4/5] overflow-hidden rounded-sm shadow-2xl skew-y-1">
-              <img alt="Women Cooperative" className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" src="/images/woman_amlou.webp" />
+            <div className="reveal aspect-[4/5] overflow-hidden rounded-sm shadow-2xl skew-y-1 relative">
+              <Image
+                alt="Women Cooperative and Process"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                src="/images/woman_amlou.webp"
+              />
             </div>
             <div className="absolute -top-10 -right-10 w-24 h-24 bg-tertiary/10 rounded-full blur-3xl"></div>
           </div>
@@ -471,7 +606,7 @@ export default function HomePageClient() {
             backgroundImage: "url('/patterns/pattern.svg')",
             backgroundRepeat: "repeat",
             backgroundSize: "150px 150px",
-            opacity: 0.08,
+            opacity: 0.14,
           }}
         />
         <div
@@ -481,7 +616,13 @@ export default function HomePageClient() {
         />
         <div className="container-max relative z-10 flex flex-col lg:flex-row gap-12 lg:gap-14 items-center">
           <div className="lg:w-1/2 reveal order-2 lg:order-1 rounded-sm border border-white/10 bg-white/[0.04] backdrop-blur-[2px] p-4 md:p-5">
-            <img src="/images/sous_massa.webp" alt="Souss-Massa" className="w-full h-auto rounded-sm object-cover" />
+            <Image
+              src="/images/sous_massa.webp"
+              alt="Souss-Massa Landscape"
+              width={800}
+              height={600}
+              className="w-full h-auto rounded-sm object-cover"
+            />
           </div>
           <div className="lg:w-1/2 space-y-12 text-start order-1 lg:order-2 rounded-sm border border-white/10 bg-white/[0.04] backdrop-blur-[2px] p-6 md:p-8">
             <TextReveal>
@@ -638,8 +779,10 @@ export default function HomePageClient() {
                 aria-hidden="true"
                 className="pointer-events-none absolute -bottom-8 -left-8 w-28 h-28 bg-tertiary/10 rounded-full blur-3xl opacity-80 group-hover:opacity-100 transition-opacity duration-500"
               />
-              <img
-                alt="Product"
+              <Image
+                alt="Premium Product Showcase"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXc15FUTFbO17RLwPcRWiIfG_GUEY2ePQwhqPD8XcKy_RU4OGHyH9Kb38tL4dJvuOUTdAzFP4f_McwoAJI7hbRqQ-9avdJnfJoLL8TS_LkVezlWncs5riBsZ0T6oS6_-fGiE4c3CjITWJ1nKuEiINxO8ddZ3p2P2AXq9VVRJT3VRFWoRPAwQmg5QKkyNxf-4hu2LYiiQEYn0JTreaEbyTP_22ReC4zajb7FjEnrtzoRGUhJdpbYeb5Bkh84ttjpVKUwVHQU3XFIxk"
               />
@@ -671,12 +814,13 @@ export default function HomePageClient() {
 
                 const imageBlock = (
                   <div className="reveal">
-                    <div className="mosaic-img overflow-hidden rounded-sm editorial-shadow border border-outline-variant/10">
-                      <img
+                    <div className="mosaic-img relative overflow-hidden rounded-sm editorial-shadow border border-outline-variant/10 h-[220px] sm:h-[280px] md:h-[420px]">
+                      <Image
                         src={item.src}
                         alt={title}
-                        className="h-[220px] w-full rounded-sm object-cover grayscale-[15%] transition-all duration-700 hover:grayscale-0 sm:h-[280px] md:h-[420px]"
-                        loading="lazy"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="rounded-sm object-cover grayscale-[15%] transition-all duration-700 hover:grayscale-0"
                       />
                     </div>
                   </div>
@@ -728,7 +872,7 @@ export default function HomePageClient() {
 
           <div className="reveal mt-20 text-center sm:mt-32">
             <Link href="/gallery" className="inline-block">
-              <button type="button" className="btn-premium uppercase text-primary-container">
+              <button type="button" className="btn-premium uppercase">
                 {t.gallery.cta}
               </button>
             </Link>

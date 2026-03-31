@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import TextReveal from "@/components/TextReveal";
 import { TextAnimate } from "@/components/ui/text-animate";
@@ -11,14 +12,12 @@ export default function ContactPageClient() {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState<string>(t.contact.form.subjects?.[0] ?? "");
   const [message, setMessage] = useState("");
 
   const whatsappHref = useMemo(() => {
     const cleaned = {
       name: name.trim(),
       email: email.trim(),
-      subject: subject?.trim(),
       message: message.trim(),
     };
 
@@ -27,14 +26,13 @@ export default function ContactPageClient() {
       "",
       `Nom: ${cleaned.name || "-"}`,
       `Email: ${cleaned.email || "-"}`,
-      `Objet: ${cleaned.subject || "-"}`,
       "",
       cleaned.message ? `Message: ${cleaned.message}` : `Message: -`,
     ];
 
     const text = encodeURIComponent(lines.join("\n"));
     return `https://wa.me/${whatsappNumber}?text=${text}`;
-  }, [email, message, name, subject]);
+  }, [email, message, name]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,9 +42,11 @@ export default function ContactPageClient() {
   return (
     <main>
       <header className="relative min-h-[90vh] md:min-h-[95vh] flex items-center overflow-hidden">
-        <img
+        <Image
           src="/images/desert.webp"
-          alt="Desert landscape background"
+          alt="Desert landscape background reflecting the origin of our products"
+          fill
+          priority
           className="absolute inset-0 w-full h-full object-cover object-[center_15%]"
         />
         {/* Soft elegant overlay to pop text and feather into next section */}
@@ -119,16 +119,7 @@ export default function ContactPageClient() {
                       once
                       className="font-headline text-xl font-bold text-rich-carbon mb-2"
                     >
-                      {t.contact.details.headquarters}
-                    </TextAnimate>
-                    <TextAnimate
-                      as="p"
-                      animation="fadeIn"
-                      by="word"
-                      once
-                      className="text-on-surface-variant"
-                    >
-                      {t.contact.details.address}
+                      {t.origins.regions[0].name}
                     </TextAnimate>
                   </div>
                 </div>
@@ -244,20 +235,6 @@ export default function ContactPageClient() {
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
-                </div>
-
-                <div className="space-y-2 text-start">
-                  <label htmlFor="subject" className="font-label text-xs font-bold uppercase tracking-wider text-on-surface-variant">{t.contact.form.subject}</label>
-                  <select
-                    id="subject"
-                    className="w-full bg-surface-container-low border-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface-container-lowest focus:ring-accent-red py-4 px-4 text-sm outline-none transition-all appearance-none cursor-pointer"
-                    value={subject}
-                    onChange={(e) => setSubject(e.target.value)}
-                  >
-                    {t.contact.form.subjects.map((sub, idx) => (
-                      <option key={idx} value={sub}>{sub}</option>
-                    ))}
-                  </select>
                 </div>
 
                 <div className="space-y-2">

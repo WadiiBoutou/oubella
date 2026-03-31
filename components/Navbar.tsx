@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
@@ -100,11 +101,15 @@ const Navbar = () => {
         hasScrolled ? 'glass-effect border-b border-primary-container/10 py-3 shadow-md shadow-primary-container/5' : 'bg-transparent border-b border-transparent py-6'
       }`}>
         <div className="nav-page-gutter flex max-w-[1920px] mx-auto justify-between items-center pointer-events-auto md:px-12">
-          <Link href="/" className="flex items-center gap-3 group">
-            <img src={t.common.logo} alt="Logo" className={`object-contain transition-all duration-500 ${hasScrolled ? 'w-10 h-10' : 'w-12 h-12 group-hover:rotate-12'}`} />
-            <span className={`font-headline font-bold tracking-tighter opacity-0 transition-all duration-500 ${hasScrolled ? 'text-2xl' : 'text-3xl'}`}>
-              {t.common.name}
-            </span>
+          <Link href="/" className="flex items-center group" aria-label={t.common.name}>
+            <Image
+              src="/LOGO1.webp"
+              alt="Tissouan Logo"
+              width={168}
+              height={48}
+              priority
+              className={`object-contain transition-all duration-500 ${hasScrolled ? "h-10 w-auto max-w-[140px]" : "h-12 w-auto max-w-[168px] group-hover:rotate-12"}`}
+            />
           </Link>
           <div className="hidden md:flex items-center gap-10 opacity-0 pointer-events-none">
             {navLinks.map((link) => (
@@ -132,11 +137,15 @@ const Navbar = () => {
       }`}>
         <div className="nav-page-gutter flex max-w-[1920px] mx-auto justify-between items-center pointer-events-auto md:px-12">
           {/* Logo link with invisible image, passing through clicks conceptually */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <img src={t.common.logo} alt="Logo" className={`object-contain opacity-0 pointer-events-none transition-all duration-500 ${hasScrolled ? 'w-10 h-10' : 'w-12 h-12'}`} />
-            <span className={`font-headline font-bold tracking-tighter transition-all duration-500 ${hasScrolled ? 'text-2xl' : 'text-3xl'}`}>
-              {t.common.name}
-            </span>
+          <Link href="/" className="flex items-center group pointer-events-none" aria-hidden="true" tabIndex={-1}>
+            <Image
+              src="/LOGO1.webp"
+              alt=""
+              width={168}
+              height={48}
+              aria-hidden="true"
+              className={`object-contain opacity-0 transition-all duration-500 ${hasScrolled ? "h-10 w-auto max-w-[140px]" : "h-12 w-auto max-w-[168px]"}`}
+            />
           </Link>
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (

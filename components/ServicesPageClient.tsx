@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import TextReveal from "@/components/TextReveal";
 import { TextAnimate } from "@/components/ui/text-animate";
@@ -148,13 +149,15 @@ export default function ServicesPageClient() {
               </div>
             </div>
 
-            <div className="md:col-span-6 relative overflow-hidden group self-center">
-              <img
-                className="w-full h-[340px] md:h-[360px] object-cover transition-transform duration-700 group-hover:scale-105"
+            <div className="md:col-span-6 relative overflow-hidden group self-center h-[340px] md:h-[360px]">
+              <Image
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 alt="Delivery van in Moroccan street"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaQ89CzeqgfulePVaBLoizX9_Ts3EXf2STP7EBTmCEe_iL-ABuDQ2BScO9HNyhtwpzpMH9DcvydTWytxv-xBZwjFj5YQrum9bNKHEADO5zBxlDsY6UoaSYUavpVPlTYWXun-vokT-wvWEHmLLh1bnTcdTmKjHOg2kmWRH19S36NF6iMz52hYfHNQ-NJtrEkx__TWX4osIEPJuWp2QhWo2feWNplTmneKGCtl4SGRVlgGKNzbFDLsXiP3EfW5aDc79qPjKq9FdGttk"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
+              <div className="absolute inset-0 bg-primary/10 mix-blend-multiply pointer-events-none"></div>
             </div>
           </div>
         </div>
@@ -171,10 +174,12 @@ export default function ServicesPageClient() {
         <div className="mx-auto flex max-w-7xl flex-col items-start gap-10 px-4 sm:px-6 md:flex-row md:items-stretch md:gap-16 md:px-12">
           <div className="relative z-[2] md:w-1/2">
             <div className="relative z-10 p-4 bg-surface-container-lowest editorial-shadow">
-              <img
+              <Image
                 className="w-full h-auto"
                 alt="Artisanal gift box"
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJMVQBCBPKzWfxM96rGKiqTAWWRrroS4npznRC0XzWg49ocqLnKF373zZto7ldMBzx_yqgqWNZt8yYwF5SBRsx1LGjUnscHdLJMoANHKAbSwrwEugVkRSLlGZ-kXcLzKbzHRmBGrDMlfKwMfJZnjRPL36kuZb973dUHW_9-N5FObIkQhqRCqJ11f4U-ViRludvkPqkM7R2Kj0dviWEX3kRKgkM8Uz2-tMFcJPT3X6sRufmHSPjXHKDuF3BeG6v9eKBTCCZwUO8ccw"
+                width={800}
+                height={600}
               />
             </div>
             <div className="absolute -top-10 -left-10 w-64 h-64 bg-secondary/10 -z-0 rounded-full blur-3xl"></div>
