@@ -784,7 +784,7 @@ export default function HomePageClient() {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXc15FUTFbO17RLwPcRWiIfG_GUEY2ePQwhqPD8XcKy_RU4OGHyH9Kb38tL4dJvuOUTdAzFP4f_McwoAJI7hbRqQ-9avdJnfJoLL8TS_LkVezlWncs5riBsZ0T6oS6_-fGiE4c3CjITWJ1nKuEiINxO8ddZ3p2P2AXq9VVRJT3VRFWoRPAwQmg5QKkyNxf-4hu2LYiiQEYn0JTreaEbyTP_22ReC4zajb7FjEnrtzoRGUhJdpbYeb5Bkh84ttjpVKUwVHQU3XFIxk"
+                src="/images/argan-pottery.jpg"
               />
             </div>
           </div>

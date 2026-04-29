@@ -153,7 +153,7 @@ export default function ServicesPageClient() {
               <Image
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 alt="Delivery van in Moroccan street"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaQ89CzeqgfulePVaBLoizX9_Ts3EXf2STP7EBTmCEe_iL-ABuDQ2BScO9HNyhtwpzpMH9DcvydTWytxv-xBZwjFj5YQrum9bNKHEADO5zBxlDsY6UoaSYUavpVPlTYWXun-vokT-wvWEHmLLh1bnTcdTmKjHOg2kmWRH19S36NF6iMz52hYfHNQ-NJtrEkx__TWX4osIEPJuWp2QhWo2feWNplTmneKGCtl4SGRVlgGKNzbFDLsXiP3EfW5aDc79qPjKq9FdGttk"
+                src="/images/delivery-van.jpg"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
@@ -177,7 +177,7 @@ export default function ServicesPageClient() {
               <Image
                 className="w-full h-auto"
                 alt="Artisanal gift box"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJMVQBCBPKzWfxM96rGKiqTAWWRrroS4npznRC0XzWg49ocqLnKF373zZto7ldMBzx_yqgqWNZt8yYwF5SBRsx1LGjUnscHdLJMoANHKAbSwrwEugVkRSLlGZ-kXcLzKbzHRmBGrDMlfKwMfJZnjRPL36kuZb973dUHW_9-N5FObIkQhqRCqJ11f4U-ViRludvkPqkM7R2Kj0dviWEX3kRKgkM8Uz2-tMFcJPT3X6sRufmHSPjXHKDuF3BeG6v9eKBTCCZwUO8ccw"
+                src="/images/gift-box.jpg"
                 width={800}
                 height={600}
               />
